@@ -1,0 +1,37 @@
+<h2 class="h4 fw-bold mb-4">{{ editing ? 'Editar' : 'Nuevo' }} Evento</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()" class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">Nombre</label>
+    <input class="form-control" formControlName="name" />
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Fecha</label>
+    <input type="date" class="form-control" formControlName="date" />
+  </div>
+  <div class="col-12">
+    <label class="form-label">Descripción</label>
+    <textarea rows="3" class="form-control" formControlName="description"></textarea>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Capacidad</label>
+    <input type="number" class="form-control" formControlName="capacity" />
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Estado</label>
+    <select class="form-select" formControlName="status">
+      <option value="ACTIVE">Activo</option>
+      <option value="CANCELLED">Cancelado</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Imagen</label>
+    <input type="file" accept="image/*" class="form-control" (change)="imageToBase64($event)" />
+  </div>
+  <div class="col-12 d-flex gap-2">
+    <button class="btn btn-primary flex-fill" type="submit" [disabled]="form.invalid">
+      {{ editing ? 'Actualizar' : 'Crear' }}
+    </button>
+    <a class="btn btn-outline-secondary flex-fill" routerLink="/admin/events">Cancelar</a>
+  </div>
+</form>

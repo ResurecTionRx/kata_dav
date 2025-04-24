@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg nav-neo ribbon position-sticky top-0 w-100">
+  <a class="navbar-brand d-flex align-items-center gap-1 fw-bold" routerLink="/">
+    <i class="bi bi-ticket-perforated-fill text-warning"></i> JSON Tickets 
+  </a>
+  
+  <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNav">
+    <i class="bi bi-list fs-3 text-white"></i>
+  </button>
+  
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ms-auto gap-lg-3">
+      <li class="nav-item"><a routerLink="/eventos" class="nav-link">Eventos</a></li>
+      <li class="nav-item"><a (click)="verMisReservas()" class="nav-link">Mis eventos</a></li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a routerLink="/admin/events" class="nav-link">Admin</a>
+      </li>
+      <li class="nav-item"><a (click)="logout()" class="nav-link text-warning">Salir</a></li>
+    </ul>
+  </div>
+  </nav>
+  

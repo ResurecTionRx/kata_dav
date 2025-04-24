@@ -1,0 +1,20 @@
+<section class="container py-5 mt-5">
+  <h2 class="text-center fw-bold mb-2">🎫 Mis Reservas</h2>
+  <p class="text-center text-muted mb-4">Tickets adquiridos!</p>
+
+  <div *ngIf="reservas.length; else empty" class="timeline">
+    <div *ngFor="let r of reservas" class="ticket">
+      <h5 class="mb-1">{{ r.eventName }}</h5>
+      <small class="text-muted d-block mb-3">{{ r.userEmail }}</small>
+
+      <span class="badge"
+      [ngClass]="(r.eventStatus === 'ACTIVO' || r.eventStatus === 'FULL') ? 'bg-success' : 'bg-danger'">
+      {{ (r.eventStatus === 'ACTIVO' || r.eventStatus === 'FULL') ? 'Confirmada' : 'Cancelada' }}
+      </span>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <div class="alert alert-info text-center mt-5">Sin reservas todavía.</div>
+  </ng-template>
+</section>

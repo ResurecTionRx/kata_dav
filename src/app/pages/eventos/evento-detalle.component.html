@@ -1,0 +1,36 @@
+<div class="container my-5" *ngIf="event">
+  <div class="card shadow border-0 rounded-4 overflow-hidden">
+    <img
+      *ngIf="event.imageBase64; else imagenPorDefecto"
+      [src]="event.imageBase64"
+      class="card-img-top object-fit-cover"
+      alt="Imagen del evento"
+      style="height: 250px;"
+    />
+
+    <ng-template #imagenPorDefecto>
+      <img
+        [src]="'https://source.unsplash.com/800x300/?' + event.name + ',event'"
+        class="card-img-top object-fit-cover"
+        alt="Evento aleatorio"
+        style="height: 250px;"
+      />
+    </ng-template>
+
+    <div class="card-body p-4">
+      <h3 class="card-title fw-bold text-primary">{{ event.name }}</h3>
+      <p class="text-muted mb-2">
+        📅 <strong>{{ event.date | date: 'fullDate' }}</strong>
+      </p>
+      <p class="card-text fs-5">
+        {{ event.description }}
+      </p>
+
+      <div class="text-end">
+        <button class="btn btn-lg btn-success rounded-pill px-4" (click)="reservarEvento()">
+          Reservar ahora 🎟️
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.navbar {
+    font-size: 1.1rem;
+  }
+  
+  .navbar .nav-link:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,155 @@
+body {
+    background: linear-gradient(to right, #a9b4f1, #93e489);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+/* === tarjetas de autenticación (login & register) === */
+.glass {
+  width: 100%;
+  max-width: 440px;   /* límite superior */
+  min-width: 340px;   /* ⬅️ evita el encogimiento */
+  flex: 0 0 auto;     /* ⬅️ no se contrae ni se expande */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, .4);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+/* =================== Eventos – Tarjeta =================== */
+.event-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1),
+              box-shadow .35s ease-in-out;
+}
+
+.event-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.25);
+}
+
+/* Imagen con zoom sutil */
+.event-img {
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.event-card:hover .event-img {
+  transform: scale(1.08);
+}
+
+/* Badge de fecha: oculto por defecto, aparece al hover */
+.event-date {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.event-card:hover .event-date {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Small fine-tuning mobile */
+@media (max-width: 576px) {
+  .event-img { height: 180px; }
+}
+/* ============ Variables ============ */
+:root {
+  --clr-brand-1: #7f5af0;
+  --clr-brand-2: #14b8a6;
+  --clr-bg-1: #0f0e17;
+  --clr-bg-2: #1a1a25;
+  --radius-xl: 1.4rem;
+}
+
+
+/* ============ NAVBAR UNIVERSAL ============ */
+.nav-neo {
+  backdrop-filter: blur(30px) saturate(140%);
+  background: rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  transition: background .35s, box-shadow .35s;
+}
+.nav-neo.scrolled {
+  background: rgba(15,14,23,.9);
+  box-shadow: 0 3px 2rem rgba(0,0,0,.35);
+}
+/* barra inferior animada */
+.nav-neo .nav-link {
+  position: relative;
+  padding-bottom: .5rem!important;
+}
+.nav-neo .nav-link::after {
+  content:'';
+  position:absolute; left:0; bottom:.2rem; height:2px; width:100%;
+  background: linear-gradient(90deg,var(--clr-brand-1),var(--clr-brand-2));
+  opacity: 0; transform: scaleX(.2);
+  transition: transform .3s, opacity .3s;
+}
+.nav-neo .nav-link.active::after,
+.nav-neo .nav-link:hover::after {
+  opacity:1; transform:scaleX(1);
+}
+
+/* ============ CARD EVENTOS SPLIT ============ */
+.card-split {
+  display: flex; flex-direction: column;
+  background: rgba(255,255,255,.04);
+  border: 0; border-radius: var(--radius-xl);
+  overflow: hidden; position: relative;
+  transition: transform .4s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 1.5rem 3rem rgba(0,0,0,.35);
+}
+.card-split:hover { transform: translateY(-10px) rotateX(4deg); }
+
+.card-split img { width: 100%; height: 220px; object-fit: cover; }
+
+.card-split .info {
+  padding: 1.2rem;
+  background: linear-gradient(135deg,rgba(127,90,240,.15),rgba(20,184,166,.15));
+}
+
+/* badge fecha */
+.badge-date {
+  font-size:.75rem; background: rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.2); backdrop-filter: blur(6px);
+}
+
+/* ============ TIMELINE RESERVAS ============ */
+.timeline {
+  display: flex; gap:2rem; overflow-x: auto; padding-bottom:1rem;
+  scroll-snap-type: x mandatory;
+}
+.ticket {
+  scroll-snap-align: start;
+  min-width: 260px; position: relative;
+  background: rgba(255,255,255,.05);
+  border-radius: var(--radius-xl);
+  padding:1.5rem 1.2rem;
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
+}
+.ticket::after { /* perforaciones */
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background: repeating-linear-gradient(90deg, transparent 0 4px, rgba(255,255,255,.04) 4px 8px);
+  mask: radial-gradient(circle at left center, transparent 12px, #000 13px) left,
+        radial-gradient(circle at right center, transparent 12px, #000 13px) right;
+  mask-size:20px 100%; mask-repeat:no-repeat;
+}
+.ticket .badge {
+  font-size:.75rem; letter-spacing:.4px;
+  border-radius: 999px; padding:.35rem .8rem;
+}
+
+/* ============ FOOTER RIBBON ============ */
+footer.ribbon {
+  backdrop-filter: blur(30px) saturate(140%);
+  background: linear-gradient(90deg,var(--clr-brand-1),var(--clr-brand-2));
+  color:#fff; text-align:center; padding:.8rem 0;
+}
+/* ============ FOOTER RIBBON ============ */
+nav.ribbon {
+  backdrop-filter: blur(30px) saturate(140%);
+  background: linear-gradient(90deg,var(--clr-brand-1),var(--clr-brand-2));
+  color:#fff; text-align:center; padding:.8rem 0;
+}

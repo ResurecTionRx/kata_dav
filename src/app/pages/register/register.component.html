@@ -1,0 +1,83 @@
+<section class="login-split d-flex flex-column flex-lg-row min-vh-100">
+  <aside
+    class="illustration flex-fill d-none d-lg-flex align-items-center justify-content-center text-white"
+  >
+    <div class="text-center p-5">
+      <h2 class="display-6 fw-bold mb-3">¡Únete a la experiencia!</h2>
+      <p class="lead opacity-75">Regístrate y obtén tus tickets al instante.</p>
+
+      <img
+        src="https://stories.freepiklabs.com/storage/53599/Sign-up_Artboard-1.svg"
+        class="img-fluid mt-4"
+        style="max-height: 260px"
+        alt="Register illustration"
+      />
+    </div>
+  </aside>
+
+  <article
+    class="glass mx-auto my-auto p-4 p-sm-5 rounded-4 shadow-lg"
+  >
+    <header class="text-center mb-4">
+      <img
+      src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+      width="72"
+      alt="User icon"
+      class="mb-3"
+    />
+      <h1 class="h4 fw-semibold mb-0">Crear Cuenta</h1>
+    </header>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="fade-in">
+      <div class="form-floating mb-3">
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          placeholder="Correo"
+          formControlName="email"
+        />
+        <label for="email">Correo electrónico</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          placeholder="Contraseña"
+          formControlName="password"
+        />
+        <label for="password">Contraseña</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          id="confirmPassword"
+          type="password"
+          class="form-control"
+          placeholder="Confirmar"
+          formControlName="confirmPassword"
+        />
+        <label for="confirmPassword">Confirmar contraseña</label>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger text-center py-2">
+        {{ error }}
+      </div>
+
+      <button
+        class="btn btn-success w-100 py-2"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Registrarme
+      </button>
+
+      <p class="text-center mt-3 mb-0 small">
+        ¿Ya tienes cuenta?
+        <a class="link-primary fw-semibold" routerLink="/login">Inicia sesión</a>
+      </p>
+    </form>
+  </article>
+</section>
